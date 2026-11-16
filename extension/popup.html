@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Repo Jump</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="palette">
+    <input id="q" type="text" placeholder="Search your repos…  (⇥ section · ↵ open · ⌘↵ new tab)" autocomplete="off" spellcheck="false" autofocus />
+    <nav id="sections" aria-label="Section"></nav>
+    <ul id="results" role="listbox"></ul>
+    <div id="empty" hidden></div>
+    <footer>
+      <span id="status"></span>
+      <span class="keys"><kbd>⌥R</kbd> refresh · <a href="options.html" target="_blank" id="opts">options</a></span>
+    </footer>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Repo Jump — Options</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 560px; margin: 32px auto; padding: 0 16px; }
+    label { display: block; margin-top: 16px; font-weight: 600; }
+    input, select { width: 100%; padding: 6px 8px; font: inherit; margin-top: 4px; }
+    .row { display: flex; gap: 8px; margin-top: 16px; }
+    .hint { color: GrayText; font-size: 12px; }
+    #status { margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Repo Jump</h1>
+  <form id="form">
+    <label>GitHub accounts</label>
+    <div id="accounts">…</div>
+    <div class="hint">
+      Repos come from every github.com account the <code>gh</code> CLI is signed into
+      (<code>gh auth login</code> to add one). Tokens are fetched from <code>gh</code> for each sync and never stored.
+    </div>
+    <label for="shortcut">Palette shortcut (works on any web page)</label>
+    <input id="shortcut" type="text" readonly placeholder="Click, then press keys" />
+    <div class="hint">Click the field and press the combination you want. Avoid ones your browser already uses (in Cra, ⌘⇧K is Clear Today).</div>
+    <label for="section">Default section</label>
+    <select id="section"></select>
+    <div class="row">
+      <button type="submit" id="save">Save</button>
+      <button type="button" id="refresh">Refresh repos now</button>
+      <button type="button" id="clear">Clear cached data</button>
+    </div>
+  </form>
+  <div id="status"></div>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

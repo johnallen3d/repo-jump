@@ -1,0 +1,43 @@
+[tools]
+node = "24"
+
+[tasks.install]
+description = "Install dev dependencies and Playwright's Chromium"
+run = ["npm install", "npx playwright install chromium"]
+sources = ["package.json", "package-lock.json"]
+outputs = ["node_modules/.package-lock.json"]
+
+[tasks.dev]
+description = "Open Chromium with the extension loaded (persistent dev profile)"
+depends = ["install"]
+run = "node scripts/dev-browser.js"
+
+[tasks.check]
+description = "Headless sync against real GitHub using your gh accounts; prints a summary"
+depends = ["install"]
+run = "CHECK=1 node scripts/dev-browser.js"
+
+[tasks.install-host]
+description = "Register the gh helper with your regular Google Chrome (needed after Load unpacked)"
+run = "node scripts/install-host.js"
+
+[tasks.cra]
+description = "Install/refresh Repo Jump in Cra from this checkout (restarts Cra)"
+run = "node scripts/install-cra.js"
+
+[tasks.cra-uninstall]
+description = "Remove Repo Jump from Cra"
+run = "node scripts/install-cra.js --uninstall"
+
+[tasks."test:unit"]
+description = "Run unit tests"
+run = "node --test test/unit/*.test.js"
+
+[tasks."test:e2e"]
+description = "Run headless browser tests against the loaded extension (HEADED=1 to watch)"
+depends = ["install"]
+run = "npx playwright test"
+
+[tasks.test]
+description = "Run unit and browser tests"
+run = ["mise run test:unit", "mise run test:e2e"]

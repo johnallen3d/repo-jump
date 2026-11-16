@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Repo Jump",
+  "version": "0.1.0",
+  "description": "Keyboard-first fuzzy search over your GitHub repos. Jump straight to PRs, issues, actions, and more.",
+  "permissions": [
+    "storage",
+    "alarms",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "https://api.github.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "omnibox": {
+    "keyword": "gh"
+  },
+  "action": {
+    "default_title": "Repo Jump",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "commands": {
+    "_execute_action": {
+      "description": "Open the Repo Jump palette (toolbar popup)"
+    }
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqPqeuK9d33MQeA22LfNAkZ/5cUf76TkU2yzXN5toc/pWFafUeJRiAgaXx5L+y+McdsCz7xEmmyPvZQH1PcWPArL2QtEXWUV/kmfgdnbP6NdtSlFqox9O2Ybqw6+oXYIbRCaziaAXP0xJxm9uUuYN17MM7S1EQMhMGNB6pWTCs/Z4BlaCPIBKnFw+iMdhXoL/NVJG16wyE6ww7lIM5KlPDSnWxFs0NebvDkGGZmuTPJfkzujmud5J7r0CtGVoI2vjGpa1MP/Y3HoCOXjJR7YORk9T39q/soQ+qHgcDKb01OTe4NDcC7qnkGaiUzXQHlnsEzt9gVHutT2NgonSzbI3uQIDAQAB",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "popup.html",
+        "popup.css",
+        "popup.js",
+        "lib/*.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

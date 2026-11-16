@@ -1,0 +1,10 @@
+{
+  "name": "repo-jump",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Keyboard-first Chrome extension to fuzzy-search your GitHub repos and jump to issues, PRs, and more.",
+  "devDependencies": {
+    "@playwright/test": "^1.65.1"
+  }
+}
